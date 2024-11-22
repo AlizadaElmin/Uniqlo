@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Uniqlo.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<UniqloDbContext>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("MSSql"));
+});
 
 var app = builder.Build();
 
@@ -19,6 +26,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "area",
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

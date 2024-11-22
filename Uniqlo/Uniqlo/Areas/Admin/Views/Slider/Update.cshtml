@@ -1,0 +1,34 @@
+@model Uniqlo.Models.Slider
+@{
+    ViewData["Title"] = "Update";
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Slider update</h6>
+    </div>
+    <div class="card-body">
+        <form enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input class="form-control" asp-for="Title">
+                <span class="text-danger" asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subtitle"></label>
+                <input class="form-control" asp-for="Subtitle">
+                <span class="text-danger" asp-validation-for="Subtitle"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Link"></label>
+                <input class="form-control" asp-for="Link">
+                <span class="text-danger" asp-validation-for="Link"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ImageUrl"></label>
+                <input class="form-control" asp-for="@Model.ImageUrl">
+                <span class="text-danger" asp-validation-for="@Model.ImageUrl"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

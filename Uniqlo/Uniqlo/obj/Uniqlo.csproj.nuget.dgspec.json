@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/elmin/RiderProjects/Uniqlo/Uniqlo/Uniqlo.csproj": {}
+    "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/Uniqlo.csproj": {}
   },
   "projects": {
-    "/Users/elmin/RiderProjects/Uniqlo/Uniqlo/Uniqlo.csproj": {
+    "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/Uniqlo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/elmin/RiderProjects/Uniqlo/Uniqlo/Uniqlo.csproj",
+        "projectUniqueName": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/Uniqlo.csproj",
         "projectName": "Uniqlo",
-        "projectPath": "/Users/elmin/RiderProjects/Uniqlo/Uniqlo/Uniqlo.csproj",
+        "projectPath": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/Uniqlo.csproj",
         "packagesPath": "/Users/elmin/.nuget/packages/",
-        "outputPath": "/Users/elmin/RiderProjects/Uniqlo/Uniqlo/obj/",
+        "outputPath": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/obj/",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
@@ -43,6 +43,18 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
