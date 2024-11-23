@@ -75,7 +75,7 @@ public class SliderController(UniqloDbContext _context,IWebHostEnvironment _env)
     {
         Slider slider = await _context.Sliders.FindAsync(id);
         if (slider == null) {return NotFound();}
-        string filePath =Path.Combine("wwwroot","imgs","sliders",slider.ImageUrl);
+        string filePath =Path.Combine(_env.WebRootPath,"imgs","sliders",slider.ImageUrl);
         if(System.IO.File.Exists(filePath)) {System.IO.File.Delete(filePath);}
         _context.Sliders.Remove(slider);
         await _context.SaveChangesAsync();

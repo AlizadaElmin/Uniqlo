@@ -7825,12 +7825,16 @@
       "PackagePath": "staticwebassets/assets/style.css"
     },
     {
-      "Id": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/2kswwryp.qla.png",
-      "PackagePath": "staticwebassets/imgs/sliders/2kswwryp.qla.png"
+      "Id": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/products/lbl52fzo.v5y.png",
+      "PackagePath": "staticwebassets/imgs/products/lbl52fzo.v5y.png"
     },
     {
-      "Id": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/jq2ht4mz.t4o.png",
-      "PackagePath": "staticwebassets/imgs/sliders/jq2ht4mz.t4o.png"
+      "Id": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/f45of34w.oqk.png",
+      "PackagePath": "staticwebassets/imgs/sliders/f45of34w.oqk.png"
+    },
+    {
+      "Id": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/ryqp5vha.ico.png",
+      "PackagePath": "staticwebassets/imgs/sliders/ryqp5vha.ico.png"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Uniqlo.Microsoft.AspNetCore.StaticWebAssets.props",

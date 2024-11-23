@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/jtUTJj4Y/mP4E4xVSWgbrGRK+LQwD5Apg0VjxmuVnA=",
+  "Hash": "y3Wk2qJGsgyQydZRhXVYpyzf6BjCPeh2oMLRHMJF5/U=",
   "Source": "Uniqlo",
   "BasePath": "_content/Uniqlo",
   "Mode": "Default",
@@ -37181,12 +37181,12 @@
       "OriginalItemSpec": "wwwroot/assets/style.css"
     },
     {
-      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/2kswwryp.qla.png",
+      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/products/lbl52fzo.v5y.png",
       "SourceId": "Uniqlo",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/",
       "BasePath": "_content/Uniqlo",
-      "RelativePath": "imgs/sliders/2kswwryp.qla.png",
+      "RelativePath": "imgs/products/lbl52fzo.v5y.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -37197,15 +37197,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/imgs/sliders/2kswwryp.qla.png"
+      "OriginalItemSpec": "wwwroot/imgs/products/lbl52fzo.v5y.png"
     },
     {
-      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/jq2ht4mz.t4o.png",
+      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/f45of34w.oqk.png",
       "SourceId": "Uniqlo",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/",
       "BasePath": "_content/Uniqlo",
-      "RelativePath": "imgs/sliders/jq2ht4mz.t4o.png",
+      "RelativePath": "imgs/sliders/f45of34w.oqk.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -37216,7 +37216,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/imgs/sliders/jq2ht4mz.t4o.png"
+      "OriginalItemSpec": "wwwroot/imgs/sliders/f45of34w.oqk.png"
+    },
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/ryqp5vha.ico.png",
+      "SourceId": "Uniqlo",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/",
+      "BasePath": "_content/Uniqlo",
+      "RelativePath": "imgs/sliders/ryqp5vha.ico.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/imgs/sliders/ryqp5vha.ico.png"
     }
   ]
 }
