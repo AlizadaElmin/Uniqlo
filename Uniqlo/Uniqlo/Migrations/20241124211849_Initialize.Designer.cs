@@ -12,8 +12,8 @@ using Uniqlo.DataAccess;
 namespace Uniqlo.Migrations
 {
     [DbContext(typeof(UniqloDbContext))]
-    [Migration("20241122215010_CreatedBrandsAndProductsTable")]
-    partial class CreatedBrandsAndProductsTable
+    [Migration("20241124211849_Initialize")]
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

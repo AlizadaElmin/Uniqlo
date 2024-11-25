@@ -1,4 +1,4 @@
-@model Product
+@model ProductCreateVM
 @{
     ViewData["Title"] = "Update";
 }
@@ -46,11 +46,6 @@
                     <label asp-for="BrandId"></label>
                     <input class="form-control" asp-for="BrandId">
                     <span class="text-danger" asp-validation-for="BrandId"></span>
-                </div>
-                <div class="col">
-                    <label asp-for="CoverImage"></label>
-                    <input class="form-control" asp-for="CoverImage">
-                    <span class="text-danger" asp-validation-for="CoverImage"></span>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

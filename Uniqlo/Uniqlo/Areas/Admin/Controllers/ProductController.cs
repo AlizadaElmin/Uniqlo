@@ -11,7 +11,7 @@ public class ProductController(IWebHostEnvironment _env,UniqloDbContext _context
 {
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Products.ToListAsync());
+        return View(await _context.Products.Include(x=>x.Brand).ToListAsync());
     }
 
     public async Task<IActionResult> Create()
@@ -44,6 +44,10 @@ public class ProductController(IWebHostEnvironment _env,UniqloDbContext _context
         }
         Product product = vm;
         product.CoverImage = await vm.File!.UploadAsync(_env.WebRootPath,"imgs","products");
+        product.Images = vm.OtherFiles.Select(x => new ProductImage
+        {
+            ImageUrl = x.UploadAsync(_env.WebRootPath, "imgs", "products").Result 
+        }).ToList();
         await _context.Products.AddAsync(product);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -54,7 +58,16 @@ public class ProductController(IWebHostEnvironment _env,UniqloDbContext _context
     {
         Product product = await _context.Products.FindAsync(id);
         if (product == null) return NotFound();
-        return View(product);
+        ProductCreateVM vm = new()
+        {
+            CostPrice = product.CostPrice,
+            Description = product.Description,
+            Name = product.Name,
+            Discount = product.Discount,
+            Quantity = product.Quantity,
+            SellPrice = product.SellPrice
+        };
+        return View(vm);
     }
 
     [HttpPost]
@@ -72,6 +85,20 @@ public class ProductController(IWebHostEnvironment _env,UniqloDbContext _context
             if (!vm.File.IsValidSize(400))
             {
                 ModelState.AddModelError("File", "File size must be less than 400 KB");
+            }
+        }
+
+        if (vm.OtherFiles.Any())
+        {
+            if (vm.OtherFiles.All(x => x.IsValidType("image")))
+            {
+                string fileNames = string.Join(',', vm.OtherFiles.Where(x => !x.IsValidType("image")).Select(x=> x.FileName));
+                ModelState.AddModelError("OtherFiles", fileNames + " is (are) not an image");
+            }
+            if (!vm.OtherFiles.All(x=> x.IsValidSize(400)))
+            {
+                string fileNames = string.Join(',', vm.OtherFiles.Where(x => !x.IsValidSize(400)).Select(x => x.FileName));
+                ModelState.AddModelError("OtherFiles", fileNames + " is (are) bigger than 400kb");
             }
         }
 

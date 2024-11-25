@@ -5,7 +5,7 @@
 namespace Uniqlo.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatedBrandsAndProductsTable : Migration
+    public partial class UpdateProduct : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
