@@ -127,10 +127,10 @@ public class ProductController(IWebHostEnvironment _env, UniqloDbContext _contex
         var data = await _context.Products.Include(x => x.Images)
             .Where(x=> x.Id == id)
             .FirstOrDefaultAsync();
-        data.Images.AddRange(vm.OtherFiles.Select(x => new ProductImage
-        {
-            ImageUrl = x.UploadAsync(_env.WebRootPath, "imgs", "products").Result
-        }).ToList());
+        // data.Images.AddRange(vm.OtherFiles.Select(x => new ProductImage
+        // {
+        //     ImageUrl = x.UploadAsync(_env.WebRootPath, "imgs", "products").Result
+        // }).ToList());
         
         product.Name = vm.Name;
         product.Description = vm.Description;

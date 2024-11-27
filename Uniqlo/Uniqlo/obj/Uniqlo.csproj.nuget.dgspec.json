@@ -13,6 +13,7 @@
         "packagesPath": "/Users/elmin/.nuget/packages/",
         "outputPath": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/obj/",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/elmin/.nuget/NuGet/NuGet.Config"
         ],
