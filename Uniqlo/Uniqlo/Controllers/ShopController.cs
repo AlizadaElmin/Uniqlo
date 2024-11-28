@@ -1,6 +1,8 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Uniqlo.DataAccess;
+using Uniqlo.ViewModels.Baskets;
 using Uniqlo.ViewModels.Brands;
 using Uniqlo.ViewModels.Products;
 using Uniqlo.ViewModels.Shops;
@@ -47,5 +49,47 @@ public class ShopController(UniqloDbContext _context):Controller
             }).ToListAsync();
         vM.ProductCount = await query.CountAsync(); 
         return View(vM);
+    }
+    
+    public async Task<IActionResult> AddBasket(int id)
+    {
+        var basket = getBasket();
+        var item = basket.FirstOrDefault(x => x.Id == id);
+        if (item != null)
+        {
+            item.Count++;
+        }
+        else
+        {
+            basket.Add(new BasketCookieItemVM
+            {
+                Id = id,
+                Count = 1
+            });
+        }
+        string data = JsonSerializer.Serialize(basket);
+        HttpContext.Response.Cookies.Append("basket", data);
+        return Ok();
+    }
+    public async Task<IActionResult> GetBasket(int id)
+    {
+
+        return Json(getBasket());
+    }
+    List<BasketCookieItemVM> getBasket()
+    {
+        try
+        {
+            string? value = HttpContext.Request.Cookies["basket"];
+            if (value is null)
+            {
+                return new();
+            }
+            return JsonSerializer.Deserialize<List<BasketCookieItemVM>>(value) ?? new();
+        }
+        catch
+        {
+            return new();
+        }
     }
 }

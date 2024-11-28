@@ -44,4 +44,31 @@ public class HomeController(UniqloDbContext _context) : Controller
     {
         return View();
     }
+    public void SetSession(string key, string value)
+    {
+        HttpContext.Session.SetString(key, value);
+        HttpContext.Session.Remove(key);
+    }
+
+    public IActionResult GetSession(string key)
+    {
+        return Content(HttpContext.Session.GetString(key) ?? string.Empty);
+    }
+    public void SetCookies(string key,string value)
+    {
+        var opt = new CookieOptions
+        {
+            MaxAge = TimeSpan.FromMinutes(2)
+        };
+        HttpContext.Response.Cookies.Append(key, value);
+    }
+    public IActionResult GetCookies(string key,string value)
+    {
+        return Content(HttpContext.Request.Cookies[key]);
+    }
+    public IActionResult RemoveCookies(string key)
+    {
+        HttpContext.Response.Cookies.Delete(key);
+        return Ok();
+    }
 }

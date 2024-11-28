@@ -9,6 +9,7 @@ builder.Services.AddDbContext<UniqloDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("MSSql"));
 });
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -22,7 +23,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
