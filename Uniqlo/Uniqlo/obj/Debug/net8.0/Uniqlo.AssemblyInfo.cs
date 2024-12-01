@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Uniqlo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+38c81f8d8952ae9d52e9149429a1decdfbaa56d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae8b1d8bd466f11737c8045a73e1828953127c97")]
 [assembly: System.Reflection.AssemblyProductAttribute("Uniqlo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Uniqlo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

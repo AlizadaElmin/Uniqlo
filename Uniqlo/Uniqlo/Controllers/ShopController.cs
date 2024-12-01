@@ -76,6 +76,22 @@ public class ShopController(UniqloDbContext _context):Controller
 
         return Json(getBasket());
     }
+
+    public async Task<IActionResult> RemoveBasket(int id)
+    {
+        var basket = getBasket();
+        var item = basket.FirstOrDefault(x => x.Id == id);
+        if (item == null)
+        {
+            return NotFound();
+        }
+     
+        basket.Remove(item);
+        string data = JsonSerializer.Serialize(basket);
+        HttpContext.Response.Cookies.Append("basket", data);
+        return RedirectToAction(nameof(Index));
+    }
+    
     List<BasketCookieItemVM> getBasket()
     {
         try
@@ -92,4 +108,5 @@ public class ShopController(UniqloDbContext _context):Controller
             return new();
         }
     }
+
 }

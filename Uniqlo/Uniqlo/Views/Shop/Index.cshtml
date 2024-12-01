@@ -1,7 +1,7 @@
 @model ShopVM
 @using Microsoft.AspNetCore.Http.Features;
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Shop";
 }
 @section style{
     <style>
@@ -76,6 +76,7 @@
                             </ul>
                         </div>
                         <!-- End Product Cat -->
+                    </div>
                 </form>
             </div>
         </div>
@@ -120,7 +121,7 @@
                                     </div>
                                     <div class="product__hover__info">
                                         <ul class="product__action">
-                                            <li><a title="Add To Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Add To Cart" asp-action="AddBasket" asp-controller="Shop" asp-route-id="@item.Id"> <span class="ti-shopping-cart"></span></a></li>
                                         </ul>
                                     </div>
                                     <div class="add__to__wishlist">

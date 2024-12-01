@@ -151,6 +151,7 @@ public class ProductController(IWebHostEnvironment _env, UniqloDbContext _contex
             return NotFound();
         }
 
+        
         string filePath = Path.Combine(_env.WebRootPath, "imgs", "products", product.CoverImage);
         if (System.IO.File.Exists(filePath))
         {
