@@ -1,0 +1,58 @@
+@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- Start Login Register Area -->
+<div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url(images/bg/5.jpg) no-repeat scroll center center / cover ;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <ul class="login__register__menu nav justify-contend-center" >
+                    <li class="login"><a asp-action="Login">Login</a></li>
+                    <li  class="register"><a class="active" asp-action="Register">Register</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Start Login Register Content -->
+        <div class="row tab-content justify-content-center">
+            <div class="col-md-6  ml-auto mr-auto">
+                <div class="htc__login__register__wrap">
+                    <!-- Start Single Content -->
+                    <div id="login"  class="single__tabs__panel tab-pane active show">
+                        <form class="login" method="post">
+                            <input asp-for="Fullname" placeholder="Fullname">
+                            <span asp-validation-for="Fullname" class="text-danger"></span>
+                            <input asp-for="Email" placeholder="Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input asp-for="Password" placeholder="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <input asp-for="RePassword" placeholder="Repeat Password">
+                            <span asp-validation-for="RePassword" class="text-danger"></span>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                            <div class="htc__login__btn">
+                                <button class="btn btn-danger">Register</button>
+                            </div>
+                        </form>
+                        <div class="htc__social__connect">
+                            <h2>Or Login With</h2>
+                            <ul class="htc__soaial__list">
+                                <li><a class="bg--twitter" href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+
+                                <li><a class="bg--instagram" href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+
+                                <li><a class="bg--facebook" href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+
+                                <li><a class="bg--googleplus" href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Single Content -->
+                </div>
+            </div>
+        </div>
+        <!-- End Login Register Content -->
+    </div>
+</div>
+<!-- End Login Register Area -->
+

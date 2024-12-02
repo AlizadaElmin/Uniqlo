@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Uniqlo.Models;
 
 namespace Uniqlo.DataAccess;
 
-public class UniqloDbContext:DbContext       
+public class UniqloDbContext:IdentityDbContext<User>
 {
     public DbSet<Slider> Sliders { get; set; }
     public DbSet<Brand> Brands { get; set; }
