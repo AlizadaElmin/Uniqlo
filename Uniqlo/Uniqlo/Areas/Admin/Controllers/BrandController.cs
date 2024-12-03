@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Uniqlo.DataAccess;
@@ -6,6 +7,7 @@ using Uniqlo.Models;
 namespace Uniqlo.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize]
 public class BrandController(IWebHostEnvironment _env,UniqloDbContext _context):Controller
 {
     public async Task<IActionResult> Index()

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Uniqlo.DataAccess;
+using Uniqlo.Extensions;
 using Uniqlo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,16 +15,26 @@ builder.Services.AddDbContext<UniqloDbContext>(opt =>
 });
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
     {
-        opt.User.RequireUniqueEmail = true;
-        opt.Password.RequiredLength = 8;
-        opt.Password.RequireDigit = true;
-        opt.Password.RequireLowercase = true;
-        opt.Password.RequireUppercase = true;
+        opt.User.RequireUniqueEmail = false;
+        opt.Password.RequiredLength = 3;
+        opt.Password.RequireDigit = false;
+        opt.Password.RequireLowercase = false;
+        opt.Password.RequireUppercase = false;
+        opt.Password.RequireNonAlphanumeric = false;    
         opt.Lockout.MaxFailedAccessAttempts = 3;
-        // opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+        opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
     }).AddDefaultTokenProviders().AddEntityFrameworkStores<UniqloDbContext>();
 
 // builder.Services.AddSession();
+
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.LoginPath = "/login";
+    x.AccessDeniedPath = "/Home/AccessDenied";
+});
+ 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +51,21 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseUserSeed();
+app.MapControllerRoute(
+    name:"login",
+    pattern:"login",new
+    {
+        Controller = "Account",
+        Action = "Login"
+    });
+app.MapControllerRoute(
+    name:"register",
+    pattern:"register", new
+    {
+        Controller = "Account",
+        Action = "Register"
+    });
 
 app.MapControllerRoute(
     name: "area",

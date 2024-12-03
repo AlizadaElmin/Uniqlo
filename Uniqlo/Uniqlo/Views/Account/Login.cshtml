@@ -1,3 +1,4 @@
+ @model LoginVM
  @{
     ViewData["Title"] = "Login";
 }
@@ -19,17 +20,22 @@
                     <!-- Start Single Content -->
                     <div id="login"  class="single__tabs__panel tab-pane active show">
                         <form class="login" method="post">
-                            <input type="text" placeholder="User Name*">
-                            <input type="password" placeholder="Password*">
+                            <input asp-for="UsernameOrEmail" placeholder="Username or Email">
+                            <span asp-validation-for="UsernameOrEmail" class="text-danger"></span>
+                            <input asp-for="Password" placeholder="Password">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="tabs__checkbox">
+                                <input asp-for="RememberMe">
+                                <span> Remember me</span>
+                            </div>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                            <div class="htc__login__btn mt--30">
+                                <button class="btn btn-danger">Login</button>
+                            </div> 
                         </form>
-                        <div class="tabs__checkbox">
-                            <input type="checkbox">
-                            <span> Remember me</span>
-                            <span class="forget"><a href="#">Forget Pasword?</a></span>
-                        </div>
-                        <div class="htc__login__btn mt--30">
-                            <a href="#">Login</a>
-                        </div>
+                
+                   
+                   
                         <div class="htc__social__connect">
                             <h2>Or Login With</h2>
                             <ul class="htc__soaial__list">

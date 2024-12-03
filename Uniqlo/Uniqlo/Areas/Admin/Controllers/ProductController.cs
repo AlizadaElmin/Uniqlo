@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Uniqlo.DataAccess;
@@ -8,6 +9,7 @@ using Uniqlo.ViewModels.Products;
 namespace Uniqlo.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Authorize]
 public class ProductController(IWebHostEnvironment _env, UniqloDbContext _context) : Controller
 {
     public async Task<IActionResult> Index()
