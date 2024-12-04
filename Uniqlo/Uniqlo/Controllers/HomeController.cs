@@ -78,4 +78,9 @@ public class HomeController(UniqloDbContext _context) : Controller
         HttpContext.Response.Cookies.Delete(key);
         return Ok();
     }
+
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
 }

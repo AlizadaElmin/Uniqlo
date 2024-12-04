@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "72l6lpGsLIf3F6dFBYfxWEoA29Pfwy+cdJJHSzLiL1g=",
+  "Hash": "cQZF5PIJgHJkLz546xvwaY5eGoNMbiMVraN8R41wowE=",
   "Source": "Uniqlo",
   "BasePath": "_content/Uniqlo",
   "Mode": "Default",
@@ -37200,25 +37200,6 @@
       "OriginalItemSpec": "wwwroot/imgs/products/210onhsf.q21.png"
     },
     {
-      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/products/3i4xz2f1.kna.png",
-      "SourceId": "Uniqlo",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/",
-      "BasePath": "_content/Uniqlo",
-      "RelativePath": "imgs/products/3i4xz2f1.kna.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/imgs/products/3i4xz2f1.kna.png"
-    },
-    {
       "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/products/cezi05d0.0no.png",
       "SourceId": "Uniqlo",
       "SourceType": "Discovered",
@@ -37369,6 +37350,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/imgs/sliders/m15bwwaq.v4b.png"
+    },
+    {
+      "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/q2iazf2j.j2l.png",
+      "SourceId": "Uniqlo",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/",
+      "BasePath": "_content/Uniqlo",
+      "RelativePath": "imgs/sliders/q2iazf2j.j2l.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/imgs/sliders/q2iazf2j.j2l.png"
     },
     {
       "Identity": "/Users/elmin/Desktop/Code/Uniqlo/Uniqlo/Uniqlo/wwwroot/imgs/sliders/ryqp5vha.ico.png",

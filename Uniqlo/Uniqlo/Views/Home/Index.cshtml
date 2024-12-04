@@ -5,9 +5,10 @@
 <!-- Start Slider Area -->
 <div class="slider__container slider--four">
     <div class="slider__activation__wrap owl-carousel owl-theme">
+        
         @foreach (var item in Model.Sliders)
         {
-            <div class="slide slider__fixed--height" style="background: rgba(0, 0, 0, 0) url(../imgs/sliders/@item.ImageUrl) no-repeat scroll center center / cover ;">
+            <div class="slide slider__fixed--height" style="background: rgba(0, 0, 0, 0) url(./imgs/sliders/@item.ImageUrl) no-repeat scroll center center / cover ;">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9 offset-sm-3 col-md-6 offset-md-6 col-lg-5 offset-lg-7">
@@ -139,7 +140,7 @@
                                     <div class="product">
                                         <div class="product__inner">
                                             <div class="pro__thumb">
-                                                <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">
+                                                <a asp-action="Details" asp-controller="Shop" asp-route-id="@item.Id">
                                                     <img src="~/imgs/products/@item.CoverImage" alt="product images">
                                                 </a>
                                             </div>

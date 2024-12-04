@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uniqlo.DataAccess;
 
@@ -11,9 +12,11 @@ using Uniqlo.DataAccess;
 namespace Uniqlo.Migrations
 {
     [DbContext(typeof(UniqloDbContext))]
-    partial class UniqloDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241204223927_Create product ratings table")]
+    partial class Createproductratingstable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,21 +156,6 @@ namespace Uniqlo.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ProductTag", b =>
-                {
-                    b.Property<int>("ProdutsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProdutsId", "TagsId");
-
-                    b.HasIndex("TagsId");
-
-                    b.ToTable("ProductTag");
                 });
 
             modelBuilder.Entity("Uniqlo.Models.Brand", b =>
@@ -333,29 +321,6 @@ namespace Uniqlo.Migrations
                     b.ToTable("Sliders");
                 });
 
-            modelBuilder.Entity("Uniqlo.Models.Tag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tag");
-                });
-
             modelBuilder.Entity("Uniqlo.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -478,21 +443,6 @@ namespace Uniqlo.Migrations
                     b.HasOne("Uniqlo.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ProductTag", b =>
-                {
-                    b.HasOne("Uniqlo.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProdutsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Uniqlo.Models.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

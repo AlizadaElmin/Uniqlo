@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Uniqlo.DataAccess;
 using Uniqlo.Extensions;
+using Uniqlo.Helpers;
 using Uniqlo.Models;
 using Uniqlo.ViewModels.Products;
+using Uniqlo.Views.Account.Enums;
 
 namespace Uniqlo.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[Authorize]
+[Authorize(Roles = RoleConstants.Product)]
 public class ProductController(IWebHostEnvironment _env, UniqloDbContext _context) : Controller
 {
     public async Task<IActionResult> Index()
@@ -39,9 +41,14 @@ public class ProductController(IWebHostEnvironment _env, UniqloDbContext _contex
             }
         }
 
-        if (!ModelState.IsValid) return View(vm);
+        if (!ModelState.IsValid)
+        {
+            ViewBag.Categories = await _context.Brands.Where(x=> !x.IsDeleted).ToListAsync();
+            return View(vm);
+        }
         if (!await _context.Brands.AnyAsync(x => x.Id == vm.BrandId))
         {
+            ViewBag.Categories = await _context.Brands.Where(x=> !x.IsDeleted).ToListAsync();
             ModelState.AddModelError("BrandId", "Brand does not exist");
             return View();
         }
@@ -88,30 +95,36 @@ public class ProductController(IWebHostEnvironment _env, UniqloDbContext _contex
     [HttpPost]
     public async Task<ActionResult> Update(int id, ProductUpdateVM vm)
     {
-        Product product = await _context.Products.FindAsync(id);
-        if (product == null) return NotFound();
+        Product product = await _context.Products.Include(x => x.Images)
+            .Where(x=> x.Id == id)
+            .FirstOrDefaultAsync();
+        // product.Images.AddRange(vm.OtherFiles.Select(x => new ProductImage
+        // {
+        //     ImageUrl = x.UploadAsync(_env.WebRootPath, "imgs", "products").Result
+        // }).ToList());
+        
         if (vm.File != null)
         {
             if (!vm.File.IsValidType("image"))
             {
                 ModelState.AddModelError("File", "File must be an image");
             }
-
+        
             if (!vm.File.IsValidSize(400))
             {
                 ModelState.AddModelError("File", "File size must be less than 400 KB");
             }
         }
-
+        
         if (vm.OtherFiles != null && vm.OtherFiles.Any())
         {
-            if (vm.OtherFiles.All(x => x.IsValidType("image")))
+            if (!vm.OtherFiles.All(x => x.IsValidType("image")))
             {
                 string fileNames = string.Join(',',
                     vm.OtherFiles.Where(x => !x.IsValidType("image")).Select(x => x.FileName));
                 ModelState.AddModelError("OtherFiles", fileNames + " is (are) not an image");
             }
-
+        
             if (!vm.OtherFiles.All(x => x.IsValidSize(400)))
             {
                 string fileNames = string.Join(',',
@@ -119,7 +132,7 @@ public class ProductController(IWebHostEnvironment _env, UniqloDbContext _contex
                 ModelState.AddModelError("OtherFiles", fileNames + " is (are) bigger than 400kb");
             }
         }
-
+        
         if (!ModelState.IsValid) return View(vm);
         if (!await _context.Brands.AnyAsync(x => x.Id == vm.BrandId))
         {
@@ -129,10 +142,6 @@ public class ProductController(IWebHostEnvironment _env, UniqloDbContext _contex
         var data = await _context.Products.Include(x => x.Images)
             .Where(x=> x.Id == id)
             .FirstOrDefaultAsync();
-        // data.Images.AddRange(vm.OtherFiles.Select(x => new ProductImage
-        // {
-        //     ImageUrl = x.UploadAsync(_env.WebRootPath, "imgs", "products").Result
-        // }).ToList());
         
         product.Name = vm.Name;
         product.Description = vm.Description;
