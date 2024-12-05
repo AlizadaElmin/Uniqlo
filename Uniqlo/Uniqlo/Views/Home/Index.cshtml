@@ -153,7 +153,7 @@
                                             </div>
                                         </div>
                                         <div class="product__details">
-                                            <h2><a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a></h2>
+                                            <h2><a asp-action="Details" asp-controller="Shop" asp-route-id="@item.Id">@item.Name</a></h2>
                                             @if (item.Discount > 0)
                                             {
                                                 <del class="old__prize">$@item.SellPrice</del>

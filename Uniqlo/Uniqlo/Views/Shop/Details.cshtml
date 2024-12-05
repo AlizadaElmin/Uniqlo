@@ -3,6 +3,7 @@
     ViewData["Title"] = Model.Name;
     int img_tab = 2;
 }
+
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(./assets/images/bg/2.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
@@ -71,18 +72,21 @@
                         {
                             <form asp-action="Rate">
                                 <input type="hidden" name="productId" value="@Model.Id"/>
-                                <input type="number" min="1" max="5" value=@ViewBag.Rating/> <button class="btn">Rate</button>
-                            </form>
+                                <input name="rate" type="number" min="1" max="5" value=@ViewBag.Rating/> <button class="btn">Rate</button>
+                                </form>
                         }
                         <br/>
                         <ul class="pro__rating">
-                                @for (int i = 0; i < Math.Ceiling(Model.ProductRatings.Average(x => x.RatingRate)); i++)
+                            @if (Model.ProductRatings is not null && Model.ProductRatings.Count != 0)
+                            {
+                                for (int i = 0; i < Math.Ceiling(Model.ProductRatings.Average(x => x.RatingRate)); i++)
                                 {
                                     <li><span class="ti-star"></span></li>
                                 }
-                            
+
+                            }
                         </ul>
-                        <span class="rat__qun">(Based on 0 Ratings)</span>
+                        <span class="rat__qun">Based on @((Model.ProductRatings?.Count ?? 0)) Rating </span>
                     </div>
                     <div class="pro__details">
                         <p>@Model.Description</p>
@@ -116,6 +120,31 @@
                         <li><a href="#"><span class="ti-email"></span></a></li>
                     </ul>
                 </div>
+                <br/>
+                <form asp-action="AddReview">
+                    <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+                        <input type="hidden" name="productId" value="@Model.Id"/>
+                        <input name="comment" type="text" class="form-control mr-3" placeholder="Add comment"/>
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+                    
+                    
+                    
+                @if (Model.ProductReviews is not null && Model.ProductReviews.Count != 0)
+                {
+                    foreach (var item in Model.ProductReviews)
+                    {
+                        <div>
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5>@item.User?.Fullname</h5>
+                                <p style="margin-left: 20px; margin-top: 5px;">@item.CreatedTime</p>
+                            </div>
+                            <div ><span>@item.Comment</span></div>
+                        </div>
+                    }
+                }
+
             </div>
         </div>
     </div>

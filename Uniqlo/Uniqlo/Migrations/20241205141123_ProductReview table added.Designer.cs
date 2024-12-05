@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Uniqlo.DataAccess;
 
@@ -11,9 +12,11 @@ using Uniqlo.DataAccess;
 namespace Uniqlo.Migrations
 {
     [DbContext(typeof(UniqloDbContext))]
-    partial class UniqloDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241205141123_ProductReview table added")]
+    partial class ProductReviewtableadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -324,7 +327,7 @@ namespace Uniqlo.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ProductReviews");
+                    b.ToTable("ProductReview");
                 });
 
             modelBuilder.Entity("Uniqlo.Models.Slider", b =>

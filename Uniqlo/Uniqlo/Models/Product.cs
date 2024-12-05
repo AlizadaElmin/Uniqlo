@@ -22,4 +22,5 @@ public class Product:BaseEntity
     public ICollection<ProductImage>? Images { get; set; }
     public ICollection<ProductRating>? ProductRatings { get; set; } 
     public ICollection<Tag>? Tags { get; set; } 
+    public ICollection<ProductReview>? ProductReviews { get; set; }
 }

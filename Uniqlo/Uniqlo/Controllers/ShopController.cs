@@ -78,9 +78,14 @@ public class ShopController(UniqloDbContext _context):Controller
     public async Task<IActionResult> Details(int? id)
     {
         if (!id.HasValue) return BadRequest();
-        var data = await _context.Products.Include(x=>x.Images).Include(x=>x.ProductRatings).Where(x=>x.Id == id.Value && !x.IsDeleted).FirstOrDefaultAsync();
+        var data = await _context.Products
+            .Include(x=>x.Images)
+            .Include(x=>x.ProductRatings)
+            .Include(x => x.ProductReviews)
+            .ThenInclude(pr => pr.User) 
+            .Where(x=>x.Id == id.Value && !x.IsDeleted).FirstOrDefaultAsync();
         if (data is null) return NotFound();
-        string? userId = User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.NameIdentifier).Value;
+        string? userId = User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.NameIdentifier)!.Value;
         if (userId is not null)
         {
            var rating = await _context.ProductRatings.Where(x => x.UserId == userId && x.ProductId == id.Value)
@@ -91,12 +96,12 @@ public class ShopController(UniqloDbContext _context):Controller
         {
             ViewBag.Rating = 5;
         }
-        
-        
+
         return View(data);
     }
 
     [Authorize]
+    [HttpPost]
     public async Task<IActionResult> Rate(int? productId, int rate = 1)
     {
         if (!productId.HasValue) return BadRequest();
@@ -119,7 +124,23 @@ public class ShopController(UniqloDbContext _context):Controller
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Details), new { id = productId });
     }
-    
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> AddReview(int? productId, string comment)
+    {
+        if (!productId.HasValue) return BadRequest();
+        string userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)!.Value;
+        if (!await _context.Products.AnyAsync(p => p.Id == productId)) return NotFound();
+        await _context.ProductReviews.AddAsync(new ProductReview
+        {
+            ProductId = productId,
+            UserId = userId,
+            Comment = comment,
+        });
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Details), new { id = productId });
+    }
     
     
     
